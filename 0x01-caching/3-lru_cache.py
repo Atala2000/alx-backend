@@ -49,8 +49,7 @@ class LRUCache(BaseCaching):
         """
         if key in self.cache_data:
             # Update the access count for the key
-            self.cache_counter[key] = max
-            (self.cache_counter.values(),
-             default=0) + 1
+            self.cache_counter[key] = max(self.cache_counter.values(),
+                                          default=0) + 1
             return self.cache_data[key]
         return None
