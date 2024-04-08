@@ -1,5 +1,9 @@
-from collections import Counter
+#!/usr/bin/env python3
+"""
+Module for creating a least recently used cache
+"""
 from base_caching import BaseCaching
+from collections import Counter
 
 
 class LRUCache(BaseCaching):
