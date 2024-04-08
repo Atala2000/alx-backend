@@ -6,6 +6,11 @@ from base_caching import BaseCaching
 
 
 class BasicCache(BaseCaching):
+    """
+    Class that defines a caching algorithm
+    from a dictionary
+    """
+
     def put(self, key: str, item: str):
         """
         Method that inserts items
@@ -18,6 +23,4 @@ class BasicCache(BaseCaching):
         """
         Method that retrieves items
         """
-        if key is None or key not in self.cache_data:
-            return None
-        return self.cache_data.get(key)
+        return self.cache_data.get(key, None)

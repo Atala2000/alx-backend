@@ -6,8 +6,15 @@ from base_caching import BaseCaching
 
 
 class FIFOCache(BaseCaching):
+    """
+    Class that implements a first in
+    and first out caching algorithm
+    """
 
     def __init__(self):
+        """
+        Initializes the object
+        """
         super().__init__()
         self.insertion_order = []
 
