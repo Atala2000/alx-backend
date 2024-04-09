@@ -8,12 +8,16 @@ from flask import Flask, render_template
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route("/")
 def index():
     """
     Returns a template
     """
-    return render_template('0-index.html')
+    return render_template("0-index.html")
 
-if __name__ == '__main__':
-    app.run(host='localhost', port=3000)
+
+if __name__ == "__main__":
+    """
+    Creates the instance
+    """
+    app.run(host="localhost", port=3000)
