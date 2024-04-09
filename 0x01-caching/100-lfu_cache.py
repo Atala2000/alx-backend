@@ -8,7 +8,7 @@ from base_caching import BaseCaching
 
 class LFUCache(BaseCaching):
     """Represents an object that allows storing and
-    retrieving items from a dictionary 
+    retrieving items from a dictionary
     """
     def __init__(self):
         """Initializes the cache.
