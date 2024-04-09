@@ -4,6 +4,8 @@ Module that creates a FIFO class
 """
 from base_caching import BaseCaching
 
+from collections import OrderedDict
+
 
 class FIFOCache(BaseCaching):
     """
@@ -16,31 +18,19 @@ class FIFOCache(BaseCaching):
         Initializes the object
         """
         super().__init__()
-        self.insertion_order = []
+        self.cache_data = OrderedDict()
 
     def put(self, key, item):
-        """
-        Inserts a key value pair in the dictionary
-        Args:
-            key (str): key for the item
-            item (str): value for the item
+        """Adds an item in the cache.
         """
         if key is None or item is None:
             return
-        if key not in self.cache_data:
-            self.insertion_order.append(key)
         self.cache_data[key] = item
-        if BaseCaching.MAX_ITEMS < len(self.cache_data):
-            print(f"DISCARD: {self.insertion_order[0]}")
-            del self.cache_data[self.insertion_order[0]]
-            self.insertion_order.pop(0)
+        if len(self.cache_data) > BaseCaching.MAX_ITEMS:
+            first_key, _ = self.cache_data.popitem(False)
+            print("DISCARD:", first_key, _)
 
     def get(self, key):
+        """Retrieves an item by key.
         """
-        Retrieves the value of an item in the cache
-        Args:
-            key (str): The key of the item in the dictionary
-        """
-        if key is None or key not in self.cache_data:
-            return
-        return self.cache_data[key]
+        return self.cache_data.get(key, None)
