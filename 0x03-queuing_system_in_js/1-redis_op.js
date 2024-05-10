@@ -6,7 +6,7 @@ const client = createClient();
 // Add error event listener
 client.on('error', (err) => {
     console.error('Redis client not connected to the server:', err);
-   
+
 });
 
 // Add connect event listener
@@ -15,11 +15,17 @@ client.on('connect', () => {
 });
 
 function setNewSchool(schoolName, value) {
-    try {
-        client.set(schoolName, value)
-        
-    }
-    catch(err) {
-        console.log("Value could not be set: ", err)
-    }
+    client.set(schoolName, value, (err, reply) => {
+        console.log(reply);
+    });
 }
+
+function displaySchoolValue(schoolName) {
+    client.get(schoolName, (err, reply) => {
+        console.log(reply);
+    });
+}
+
+displaySchoolValue('Holberton');
+setNewSchool('HolbertonSanFrancisco', '100');
+displaySchoolValue('HolbertonSanFrancisco');
