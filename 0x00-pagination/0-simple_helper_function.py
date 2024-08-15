@@ -2,6 +2,8 @@
 """
 Module for pagination
 """
+
+
 def index_range(page: int, page_size: int) -> tuple:
     """
     Function to return a list of index used for pagination
